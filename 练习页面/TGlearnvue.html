@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 1. 引入vue.js
+2. 创建视图，id为app的div
+3. 实例化Vue
+4. 传入实例选项 el 、data
+5. 在视图中使用 {{ msg }} -->
+    <div id="app">
+        {{sayHi}}<br>
+        {{speed+'没有开挂'}}
+        <div v-html=write></div>
+        <span v-text=write></span>
+        <div v-if=one>
+            {{speed}}
+        </div>
+        <div>
+            <button v-on:click="off()">关</button>
+            <button @click="on()">开</button>
+        </div>
+        <ul>
+            <li v-for="(value,index) in city">{{value}}</li>
+         <!-- <li v-for="val in city">{{val}}</li> -->
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                sayHi: 'JJ UP is ztg',
+                speed: '180km/h',
+                write: '<div>写代码</div>',
+                one : true,
+                // off : false,
+                city: [
+               "北京",
+               "上海",
+               "广州"
+             ]
+            },
+            methods: {
+                tg: function () {
+                    console.log(vm.sayHi)
+                },
+                run: function () {
+                    console.log(vm.speed)
+                },
+                password: function () {
+                    console.log('whose your daddy')
+                },
+                off:function(){
+                    this.one=false
+                },
+                on:function(){
+                    this.one= true
+                }
+            }
+        })
+        vm.tg();
+        vm.run();
+        
+    </script>
+</body>
+
+</html>
